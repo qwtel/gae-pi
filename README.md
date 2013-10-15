@@ -5,6 +5,12 @@ It contains a servlet that can be deployed on Google App Engine, which will send
 The tasks get executed inside a HTML5 Web Worker so that the user won't notice lag on the site, which would also allow for
 embedding inside other web apps.
 
+Inspiration drawn from 
+
+* [Andrew Collins - Distributed Pi](http://cgi.csc.liv.ac.uk/~acollins/pi and https://github.com/antimatter15/distributed-pi)
+* [antimatter15/distributed-pi](https://github.com/antimatter15/distributed-pi)
+
+
 ## Limits of the approach
 
 ### Performance
@@ -13,7 +19,7 @@ The performance isn't as bad as I expected from JavaScript. In fact the non-opti
 [did slightly better][2] than the non-optimized Scala version in Chrome 30. 
 
 However, maybe WebGL could be utlized for vastly improved performance. 
-There is also WebCL currently developed, which could be useful at some point in the future.
+There is also WebCL currently being developed, which could be useful at some point in the future.
 
 ### Algorithm
 
