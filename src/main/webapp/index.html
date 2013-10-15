@@ -1,0 +1,58 @@
+<html>
+<head>
+    <script>
+        var ENDPOINT = "/work";
+        var worker = new Worker("/js/worker.js");
+
+        var result = null;
+        var keepResult = function(e) {
+            result = e.data;
+
+            document.getElementById("progress")
+                    .setAttribute("value", ((result.step - 1) * result.digitPos + result.i) / (4 * result.digitPos));
+
+            if (result.isComplete == true) {
+                console.log(result);
+
+                if (result == null) return;
+
+                var req = new XMLHttpRequest();
+                req.open("POST", ENDPOINT, true);
+                req.onreadystatechange = assignNewWork;
+                req.send(JSON.stringify(result));
+
+                result = null;
+            }
+        };
+        worker.onmessage = keepResult;
+
+        var assignNewWork = function() {
+            if (this.readyState == 4) {
+                console.log(this.responseText);
+                worker.postMessage(JSON.parse(this.responseText));
+            }
+        };
+
+        window.onbeforeunload = function() {
+            worker.terminate();
+
+            if (result == null) return;
+
+            result.inProgress = false; // XXX: This shouldn't be here
+
+            var req = new XMLHttpRequest();
+            req.open("PUT", ENDPOINT, true);
+            req.send(JSON.stringify(result));
+        };
+
+        // TODO: Bootstrap data
+        var req = new XMLHttpRequest();
+        req.open("GET", ENDPOINT, true);
+        req.onreadystatechange = assignNewWork;
+        req.send(null);
+    </script>
+</head>
+<body>
+    <progress id="progress" max="1"></progress>
+</body>
+</html>
