@@ -2,16 +2,9 @@
 
 Distributed parallel computation of fractional digits of Pi using the [BBP][1] algorithm written in Scala and JavaScript.
 It contains a servlet that can be deployed on Google App Engine, which will send work units to any web browser that connetcs.
-The tasks get executed inside a HTML5 Web Worker so that the user won't notice lag on the site, which would also allow for
-embedding inside other web apps.
+The tasks get executed inside a HTML5 Web Worker so that the user won't notice lag on the site. This would also allow for embedding inside other web sites.
 
-Inspiration drawn from 
-
-* [Andrew Collins - Distributed Pi](http://cgi.csc.liv.ac.uk/~acollins/pi and https://github.com/antimatter15/distributed-pi)
-* [antimatter15/distributed-pi](https://github.com/antimatter15/distributed-pi)
-
-
-## Limits of the approach
+## About the approach
 
 ### Performance
 
@@ -41,6 +34,14 @@ byte arrays. Eight hex digits would also fit nicely into an integer.
 
 There is currently a hard coded limit of 30 seconds for a task. However, as digit positios increase this limit is no 
 longer appropriate.
+
+
+## Acknowledgements
+
+Inspiration drawn from:
+
+* [Andrew Collins - Distributed Pi](http://cgi.csc.liv.ac.uk/~acollins/pi and https://github.com/antimatter15/distributed-pi)
+* [antimatter15/distributed-pi](https://github.com/antimatter15/distributed-pi)
 
 ## Build
 
