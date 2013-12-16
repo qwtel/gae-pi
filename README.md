@@ -23,7 +23,7 @@ The implementation does no longer return any correct results at digit position a
 As JavaScript only supports double values this problem will be hard to overcome. There are arbitrary precision
 arithmetic libraries for JavaScript but there are probably to slow. This is not confirmed though.
 
-Another approach would be [Bellard's formula], which would provide a "43% performance increase" over BBP and could be
+Another approach would be [Bellard's formula][3], which would provide a "43% performance increase" over BBP and could be
 more suitable for a JS envirionment (?).
 
 ### Server
@@ -64,3 +64,4 @@ To see all the available goals for the App Engine plugin, run
     
 [1]: http://en.wikipedia.org/wiki/Bailey%E2%80%93Borwein%E2%80%93Plouffe_formula
 [2]: http://cell303.tumblr.com/post/63805261487/scala-vs-javsscript-performance-for-bbp
+[3]: http://bellard.org/pi/
